@@ -37,7 +37,7 @@ export class TaskService {
   }
 
   // -------- Méthode pour sauvegarder les tâches dans localStorage --------
-  private saveTasks(): void {
+  saveTasks(): void {
     localStorage.setItem(this.storageKey, JSON.stringify(this.tasks));
   }
 
