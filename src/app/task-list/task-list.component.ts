@@ -6,8 +6,8 @@ let taskIdCounter = 0;
 
 @Component({
   selector: 'app-task-list',
-  standalone: true,
-  imports: [],
+  // standalone: true,
+  // imports: [],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
 })

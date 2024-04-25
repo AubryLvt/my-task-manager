@@ -7,3 +7,8 @@
     <button (click)="deleteTask(task)">Delete</button>
   </li>
 </ul>
+
+<form (submit)="addTask()">
+  <input type="text" [(ngModel)]="newTaskName" placeholder="Enter task name" />
+  <button type="submit">Add Task</button>
+</form>
