@@ -19,6 +19,7 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit(): void {
     this.tasks = this.taskService.getTasks();
+    console.log('Tâches récupérées au chargement :', this.tasks);
   }
 
   addTask(): void {
@@ -31,8 +32,9 @@ export class TaskListComponent implements OnInit {
       completed: false,
     };
     this.tasks.push(newTask);
-    this.newTaskName = '';
     this.taskService.saveTasks();
+    this.newTaskName = '';
+    console.log('Tâches après ajout :', this.tasks);
   }
 
   completeTask(task: Task): void {

@@ -20,8 +20,14 @@ export class TaskService {
 
   // -------- Méthodes pour récupérer toutes les tâches --------
   private getStoredTasks(): Task[] {
-    // Récupérer les tâches depuis localStorage, ou retourner un tableau vide si aucune tâche n'est trouvée
-    return JSON.parse(localStorage.getItem(this.storageKey)) || [];
+    try {
+      const storedTasks =
+        JSON.parse(localStorage.getItem(this.storageKey)) || [];
+      return storedTasks;
+    } catch (error) {
+      console.error('Erreur lors de la récupération des tâches :', error);
+      return [];
+    }
   }
 
   getTasks(): Task[] {
@@ -30,15 +36,25 @@ export class TaskService {
 
   // -------- Méthode pour ajouter une nouvelle tâche --------
   addTask(task: Task): void {
+    console.log('add TASK');
+
     // Ajouter la nouvelle tâche à la liste
     this.tasks.push(task);
     // Sauvegarder la liste mise à jour dans localStorage
     localStorage.setItem(this.storageKey, JSON.stringify(this.tasks));
+    console.log(
+      'Contenu de localStorage :',
+      localStorage.getItem(this.storageKey)
+    );
   }
 
   // -------- Méthode pour sauvegarder les tâches dans localStorage --------
   saveTasks(): void {
     localStorage.setItem(this.storageKey, JSON.stringify(this.tasks));
+    console.log(
+      'save task - Contenu de localStorage :',
+      localStorage.getItem(this.storageKey)
+    );
   }
 
   // -------- Méthode pour marquer une tâche comme complétée --------
