@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Task } from '../task.model';
 import { TaskService } from '../task.service';
 
@@ -11,7 +11,7 @@ let taskIdCounter = 0;
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
 })
-export class TaskListComponent {
+export class TaskListComponent implements OnInit {
   tasks: Task[];
   newTaskName: string;
 
