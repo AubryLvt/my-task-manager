@@ -21,8 +21,7 @@ export class TaskService {
   // -------- Méthodes pour récupérer toutes les tâches --------
   private getStoredTasks(): Task[] {
     try {
-      const storedTasks =
-        JSON.parse(localStorage.getItem(this.storageKey)) || [];
+      const storedTasks = JSON.parse(localStorage.getItem(this.storageKey));
       return storedTasks;
     } catch (error) {
       console.error('Erreur lors de la récupération des tâches :', error);
