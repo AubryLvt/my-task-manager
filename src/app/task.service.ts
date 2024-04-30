@@ -40,8 +40,13 @@ export class TaskService {
 
     // Ajouter la nouvelle tâche à la liste
     this.tasks.push(task);
+    console.log('Tâches après ajout(this.tasks) :', this.tasks);
+    if (localStorage) {
+      localStorage.setItem(this.storageKey, JSON.stringify(this.tasks));
+    } else {
+      console.error('localStorage non disponible');
+    }
     // Sauvegarder la liste mise à jour dans localStorage
-    localStorage.setItem(this.storageKey, JSON.stringify(this.tasks));
     console.log(
       'Contenu de localStorage :',
       localStorage.getItem(this.storageKey)
